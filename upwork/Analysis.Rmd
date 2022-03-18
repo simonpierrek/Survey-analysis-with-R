@@ -1,0 +1,95 @@
+---
+title: "Data analysis"
+author: "Simon Pierre"
+date: "3/16/2022"
+output:
+  word_document: default
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+library(readr)
+data <- read_csv("data/Green-Supply-Chain-Integration-Survey-Data.csv")
+data <- as.data.frame(data)
+rownames(data) <- data$URN
+data_1<- data[,4:18]
+data_2<- data[,21:40]
+data_3 <- data[,43:57]
+data_4 <- data[,60:65]
+data_5 <- data[,68:84]
+data_6 <- data[,87:97]
+data_7 <- data[,100:107]
+data_8 <- data[,112:113]
+
+```
+
+Part_I: Internal_Integration
+
+Frequency distribution of Internal integration of the concept of green
+
+```{r}
+library(tidyverse)
+plot(as.data.frame(table(unlist(data_1))), xlab("Level of implementation"), ylab("Frequence"))
+```
+What is the less implemented? from the 15Th? By the mean of values we can get the results. we need this to help them or advise them to advance in their green policy.
+
+```{r}
+library(dplyr)
+means <- as.data.frame(round(colMeans(data_1)))
+means <- cbind(Q=rownames(means),means)
+means
+```
+From the analysis, the participants have integrated the green comcept in their business but they *rarely emphasis* on the green concept when it comes to business strategies which reward top management based on successful achievement of environmental goals.
+
+
+Part_II:_Supplier_integration 
+Frequency distribution of Supplier_integration of the concept of green
+```{r}
+plot(as.data.frame(table(unlist(data_2))), xlab("Level of implementation"), ylab("Frequence"))
+```
+Most of the respondant do not implement the green concept when it comes to Supplier_integration.
+Let's see inside
+```{r}
+means_2 <- as.data.frame(round(colMeans(data_2)))
+means_2 <- cbind(Q=rownames(means_2),means_2)
+means_2
+```
+
+The only one thing they use to do well with their supliers is to exchange information about cleaner production and cleaner technologies with supliers. For the rest they did it rarely or sometimes.
+
+Part III
+```{r}
+plot(as.data.frame(table(unlist(data_3))), xlab("Level of implementation"), ylab("Frequence"))
+```
+They integrate the green concept with their customers sometimes. No need to go deeper here. 
+
+*Part Iv:* Stakeholder coordination engagement
+
+```{r}
+plot(as.data.frame(table(unlist(data_4))), xlab("Level of implementation"), ylab("Frequence"))
+```
+Part V: Environnemental management pratices
+
+```{r}
+plot(as.data.frame(table(unlist(data_5))), xlab("Level of implementation"), ylab("Frequence"))
+```
+Part VI: Company business performance
+
+```{r}
+plot(as.data.frame(table(unlist(data_6))), xlab("Level of implementation"), ylab("Frequence"))
+```
+
+Part Vii Company environnement performance acheived in the past two years
+
+```{r}
+plot(as.data.frame(table(unlist(data_7))), xlab("Level of implementation"), ylab("Frequence"))
+```
+Part Viii: Company environnement performance
+
+```{r}
+plot(as.data.frame(table(unlist(data_8))), xlab("Level of implementation"), ylab("Frequence"))
+```
+
+
+
